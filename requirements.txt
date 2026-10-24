@@ -1,2 +1,3 @@
 python-telegram-bot[webhooks]==22.8
-yt-dlp[default]>=2025.1.1
+yt-dlp[default]==2026.10.21
+curl_cffi==0.16.0

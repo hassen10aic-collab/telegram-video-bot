@@ -1,0 +1,42 @@
+BOT TELEGRAM - VERSION CLOUD / RENDER (PC ÉTEINT)
+================================================
+
+IMPORTANT : Cette version remplace l'ancienne version à lancer dans CMD.
+Elle utilise un webhook Telegram, et non run_polling().
+
+ÉTAPE 1 - BOTFATHER
+Dans Telegram : @BotFather > /newbot > récupérer le token.
+Ne donne ton token à personne. Ne l'écris PAS dans les fichiers du projet.
+Si ton ancien fichier .py contient déjà ton vrai token, ne le publie pas.
+
+ÉTAPE 2 - GITHUB
+Créer un dépôt privé sur https://github.com/new
+Extraire ce ZIP sur le PC et ajouter ces fichiers A LA RACINE du dépôt :
+  bot_video_telegram.py
+  requirements.txt
+  render.yaml
+  LISEZ_MOI.txt
+Commit changes.
+
+ÉTAPE 3 - RENDER
+Ouvrir https://dashboard.render.com/
+Connecter GitHub et sélectionner "New" > "Blueprint".
+Choisir le dépôt qui contient render.yaml.
+Au moment du déploiement, Render demandera TELEGRAM_BOT_TOKEN :
+COLLER le token BotFather dans le champ SECRET, uniquement sur Render.
+Créer/déployer le service.
+
+ÉTAPE 4 - TEST
+Dans les journaux Render (Logs), vérifier l'absence d'erreurs.
+Sur Telegram, ouvrir ton bot, envoyer /start et ensuite une URL de vidéo publique.
+En cas d'échec, lire les logs Render.
+
+REMARQUES IMPORTANTES
+- La version gratuite Render se met en veille après 15 min sans trafic ; le premier
+  message peut prendre environ une minute (ou plus) pour être traité au réveil.
+- Render peut interrompre le service, impose des limites de bande passante et
+  ne garantit pas un fonctionnement ininterrompu 24 h/24.
+- Envoi via Telegram limité ici à 49 Mo par fichier.
+- Des sites ou des vidéos (privés / DRM / droits) ne sont pas téléchargeables.
+- GitHub Actions n'est PAS nécessaire : Render exécute le bot dans le cloud.
+- Ne lance pas simultanément l'ancienne version polling (run_polling).

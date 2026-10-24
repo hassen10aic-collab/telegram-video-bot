@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: telegram-video-bot
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot_video_telegram.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
